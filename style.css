@@ -61,6 +61,11 @@
     gap: 12px;
 }
 
+.card img{
+    height: 100px;
+    cursor: pointer;
+}
+
 .content{
     display: flex;
     flex-wrap: wrap;
