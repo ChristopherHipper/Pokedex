@@ -1,0 +1,32 @@
+.grass{
+    background-color: green;
+}
+
+.water{
+    background-color: blue;
+}
+
+.fire{
+    background-color: red;
+}
+
+.bug{
+    background-color: rgb(19, 64, 19);
+}
+
+.normal{
+    background-color: gray;
+}
+
+.poison{
+    background-color: blueviolet;
+}
+
+.electric{
+    background-color: yellow;
+}
+
+.ground{
+    background-color: orange;
+}
+

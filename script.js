@@ -3,9 +3,14 @@ let pokemons = [];
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
 
 async function getPokemons(path) {
-    let response = await fetch(BASE_URL + path);
-    let responseToJson = await response.json()
-    pokemons.push(responseToJson)
+    try {
+        let response = await fetch(BASE_URL + path);
+        let responseToJson = await response.json()
+        pokemons.push(responseToJson)
+    } catch (error) {
+        console.log("Fetch from the API didn't work");
+        
+    }
 }
 
  async function onloadFunc() {

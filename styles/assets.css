@@ -13,3 +13,8 @@ footer {
     background-color: rgb(8,32,41);
     margin-top: auto;
 }
+
+main{
+    text-align: center;
+    padding-bottom: 12px;
+}
