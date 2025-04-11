@@ -9,8 +9,17 @@ async function getPokemons(path) {
         pokemons.push(
             {
                 name : responseToJson.name,
+                type1 : responseToJson.types[0].name,
+                type2 : responseToJson.name,
                 id : responseToJson.id,
                 id : responseToJson.id,
+                img : responseToJson.sprites.other.home.front_default,
+                height : responseToJson.height,
+                weight : responseToJson.weight,
+                baseExperience : responseToJson.base_experience,
+                abilities1 : responseToJson.abilities[0].name,
+                abilities2 : responseToJson.abilities[1].name,
+                
             }
         )
     } catch (error) {
