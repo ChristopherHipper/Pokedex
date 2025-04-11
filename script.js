@@ -6,7 +6,13 @@ async function getPokemons(path) {
     try {
         let response = await fetch(BASE_URL + path);
         let responseToJson = await response.json()
-        pokemons.push(responseToJson)
+        pokemons.push(
+            {
+                name : responseToJson.name,
+                id : responseToJson.id,
+                id : responseToJson.id,
+            }
+        )
     } catch (error) {
         console.log("Fetch from the API didn't work");
         
