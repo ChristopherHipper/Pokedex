@@ -1,32 +1,65 @@
 .grass{
-    background-color: green;
+    background-color: rgb(0, 163, 0);
 }
 
+.grass:hover{
+    box-shadow: 0 0 20px rgb(0, 163, 0);
+}
+
+
 .water{
-    background-color: blue;
+    background-color: rgb(53, 53, 244);
+}
+
+.water:hover{
+    box-shadow: 0 0 20px rgb(53, 53, 244);
 }
 
 .fire{
-    background-color: red;
+    background-color: rgb(216, 33, 33);
+}
+
+.fire:hover{
+    box-shadow: 0 0 20px rgb(216, 33, 33);
 }
 
 .bug{
     background-color: rgb(19, 64, 19);
 }
 
+.bug:hover{
+    box-shadow: 0 0 20px rgb(19, 64, 19);
+}
+
 .normal{
     background-color: gray;
+}
+
+.normal:hover{
+    box-shadow: 0 0 20px gray;
 }
 
 .poison{
     background-color: blueviolet;
 }
 
+.poison:hover{
+    box-shadow: 0 0 20px blueviolet;
+}
+
 .electric{
     background-color: yellow;
 }
 
+.electric:hover{
+    box-shadow: 0 0 20px yellow;
+}
+
 .ground{
     background-color: orange;
+}
+
+.ground:hover{
+    box-shadow: 0 0 20px orange;
 }
 
