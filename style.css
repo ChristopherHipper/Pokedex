@@ -48,14 +48,11 @@
     margin: 12px;
     width: 200px;
     border-radius: 12px;
-    transition: all 0.8s ease;
-    position: relative;
-    overflow: hidden;
     cursor: pointer;
+    background-color: rgb(8,32,41);
 }
 
 .card_header{
-    background-color: rgb(8,32,41);
     padding-top: 8px;
     padding-bottom: 8px;
     width: 100%;
@@ -64,30 +61,13 @@
     gap: 12px;
 }
 
-
-
-.card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(0deg, transparent, transparent 30%, rgba(0,255,255,0.3)
-);
-    transform: rotate(-45deg);
-    transition: all 0.5s ease;
-    opacity: 0;
-}
-  
-.card:hover::before {
-    opacity: 1;
-    transform: rotate(-45deg) translateY(100%);
-}
-
 .pokemon_img{
     width: 200px;
-    position: relative;
+    filter: drop-shadow(5px 5px 5px #000000); 
+}
+
+.pokemon_img:hover{
+    filter: drop-shadow(10px 10px 10px #000000); 
 }
 
 
@@ -95,7 +75,6 @@
     display: flex;
     justify-content: center;
     gap: 12px;
-    background-color: rgb(8,32,41);
     width: 100%;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -129,3 +108,81 @@
 .img_container{
     width: 200px;
 }
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.401);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    
+}
+
+.overlay_card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 12px;
+    width: 300px;
+    border-radius: 12px;
+    background-color: rgb(8,32,41);
+}
+
+.overlay_card_header{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.overlay_pokemon_img{
+    width: 300px;
+    filter: drop-shadow(5px 5px 5px #000000); 
+}
+
+.overlay_card_types{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.overlay_nav{
+    display: flex;
+    width: 100%;
+    padding-bottom: 6px;
+}
+
+.overlay_button{
+    width: 33.33333%;
+    color: white;
+    background-color: rgb(11, 44, 56);
+    border: 0;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.overlay_button:hover{
+    border-bottom: 2px solid rgb(188, 83, 86);
+    color: rgb(188, 83, 86)
+}
+
+.border{
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+  
+  .aktive_link {
+    border-bottom: 2px solid rgb(188, 83, 86);
+    color: rgb(188, 83, 86)
+  }

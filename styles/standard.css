@@ -10,4 +10,16 @@
   margin: 0 auto;
 }
 
+.d_none{
+  display: none;
+}
+
+td{
+  padding-bottom: 8px;
+}
+
+table{
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
 
