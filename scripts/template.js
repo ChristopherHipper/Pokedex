@@ -56,3 +56,44 @@ function getMainInformation(i) {
                 </tr>
             </table>`
 }
+
+function getStats(i) {
+    return `<table>
+                <tr class="info_tr">
+                    <td>hp</td>
+                    <td class="bar_container">
+                        <div class="bar" style="width: ${pokemons[i].stats[0].base_stat-20}%;"</div>
+                    </td>
+                </tr>
+                <tr class="info_tr">
+                    <td>attack</td>
+                    <td class="bar_container">
+                        <div class="bar" style="width: ${pokemons[i].stats[1].base_stat-20}%;"</div>
+                    </td>
+                </tr>
+                <tr class="info_tr">
+                    <td>defense</td>
+                    <td class="bar_container">
+                        <div class="bar" style="width: ${pokemons[i].stats[2].base_stat-20}%;"</div>
+                    </td>
+                </tr>
+                <tr class="info_tr">
+                    <td>sepcial-attack</td>
+                    <td class="bar_container">
+                        <div class="bar" style="width: ${pokemons[i].stats[3].base_stat-20}%;"</div>
+                    </td>
+                </tr>
+                                <tr class="info_tr">
+                    <td>special-defense</td>
+                    <td class="bar_container">
+                        <div class="bar" style="width: ${pokemons[i].stats[4].base_stat-20}%;"</div>
+                    </td>
+                </tr>
+                                <tr class="info_tr">
+                    <td>speed</td>
+                    <td class="bar_container">
+                        <div class="bar" style="width: ${pokemons[i].stats[5].base_stat-20}%;"</div>
+                    </td>
+                </tr>
+            </table>`
+}

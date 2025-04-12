@@ -59,7 +59,19 @@ function closeOverlayCard() {
 }
 
 function openMainInformation(index) {
-    document.getElementById('main_info').classList.add('aktive_link')
     let mainRef = document.getElementById('overlay_content')
+    mainRef.innerHTML = "";
+    document.getElementById('stats').classList.remove('aktive_link')
+    document.getElementById('evo_chain').classList.remove('aktive_link')
+    document.getElementById('main_info').classList.add('aktive_link')
     mainRef.innerHTML = getMainInformation(index)
+}
+
+function openStats(index) {
+    let statsRef = document.getElementById('overlay_content')
+    statsRef.innerHTML = "";
+    document.getElementById('main_info').classList.remove('aktive_link')
+    document.getElementById('evo_chain').classList.remove('aktive_link')
+    document.getElementById('stats').classList.add('aktive_link')
+    statsRef.innerHTML = getStats(index);
 }
