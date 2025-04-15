@@ -22,11 +22,9 @@ async function fetchSinglePokemon(pokemonList) {
         let url = pokemonList[index].url;
         let singlePokemon = await fetch(url)
         let singlePokemonAsJson = await singlePokemon.json()
-
         let pokemonSpeciesUrl = singlePokemonAsJson.species.url;
         let responsePokemonSpecies = await fetch(pokemonSpeciesUrl)
         let pokemonSpeciesData = await responsePokemonSpecies.json()
-
         let pokemonEvoChainUrl = pokemonSpeciesData.evolution_chain.url;
         let responsePokemonEvoChain = await fetch(pokemonEvoChainUrl)
         let pokemonEvoChainData = await responsePokemonEvoChain.json()
@@ -34,7 +32,6 @@ async function fetchSinglePokemon(pokemonList) {
     }
     renderPokemons();
     console.log(pokemons);
-    
 }
 
 function renderPokemons() {
@@ -49,12 +46,15 @@ function openOverlayCard(singlePokemon) {
     let openOverlay = document.getElementById("overlay");
     openOverlay.classList.remove("d_none");
     openOverlay.innerHTML = getoverlayCardTemplate(singlePokemon);
+    document.getElementById("body").style.overflow = "hidden";
     openMainInformation(singlePokemon)
+    checkNextPrevButton(singlePokemon)
 }
 
 function closeOverlayCard() {
     let closeOverlay = document.getElementById("overlay");
     closeOverlay.classList.add("d_none");
+    document.getElementById("body").style.overflow = "auto";
 }
 
 function openMainInformation(index) {
@@ -94,4 +94,32 @@ function openEvoChain(index) {
 function findImgByName(name) {
     let found = pokemons.find(p => p.singlePokemonAsJson.name === name);
     return found ? found.singlePokemonAsJson.sprites.other.home.front_default : '';
+}
+
+function checkNextPrevButton(singlePokemon) {
+    if (singlePokemon == 0) {
+        document.getElementById('prev_button').disabled = true;
+        document.getElementById('prev_button').style.opacity = "0.2";
+     } else if (singlePokemon == pokemons.length-1) {
+        document.getElementById('next_button').disabled = true;
+        document.getElementById('next_button').style.opacity = "0.2";
+     } else return
+}
+
+function nextPokemonCard(pokemon) {
+    pokemon++
+    openOverlayCard(pokemon)
+    if (pokemon == pokemons.length-1) {
+        document.getElementById('next_button').disabled = true;
+        document.getElementById('next_button').style.opacity = "0.2";
+     }
+}
+
+function prevPokemonCard(pokemon) {
+    pokemon--
+    openOverlayCard(pokemon)
+    if (pokemon == 0) {
+        document.getElementById('prev_button').disabled = true;
+        document.getElementById('prev_button').style.opacity = "0.2";
+     }
 }

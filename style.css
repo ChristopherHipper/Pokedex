@@ -142,7 +142,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 12px;
+    align-items: center;
+    gap: 20px;
 }
 
 .overlay_pokemon_img{
@@ -228,4 +229,21 @@
 .evo_content{
     display: flex;
     flex-direction: column;
+}
+
+.icon{
+    height: 34px;
+    width: 34px;
+    cursor: pointer;
+    opacity: 1;
+    transition: 0.1s;
+}
+
+.icon:hover{
+    opacity: 0.6;
+}
+
+.switch_button{
+    background-color: rgb(8,32,41);
+    border: 0;
 }
