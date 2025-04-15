@@ -121,3 +121,18 @@ function getEvoChain(img1, img2, img3, evo1, evo2, evo3) {
 
             </div>`
 }
+
+function getSearchedPokemonsTemplate(i) {
+    return `<div onclick="openOverlayCard(${i})" class="card">
+                <div class="card_header">
+                    <h3>#${filteredPokemons[i].singlePokemonAsJson.id}</h3>
+                    <h3>${filteredPokemons[i].singlePokemonAsJson.name.charAt(0).toUpperCase() + filteredPokemons[i].singlePokemonAsJson.name.slice(1)}</h3>
+                </div>
+                <div class="${filteredPokemons[i].singlePokemonAsJson.types[0].type.name}">
+                    <img class="pokemon_img" src="${filteredPokemons[i].singlePokemonAsJson.sprites.other.home.front_default}" alt="großes bild">
+                </div>
+                <div class="card_types">
+                    ${filteredPokemons[i].singlePokemonAsJson.types.map(index => `<img class="types_img" src="./assets/icon/${index.type.name}.png" alt="+">`).join('')}
+                </div>
+            </div>`
+}

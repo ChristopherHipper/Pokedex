@@ -247,3 +247,28 @@
     background-color: rgb(8,32,41);
     border: 0;
 }
+
+.warning{
+    color: rgb(203, 0, 0);
+    font-size: 12px;
+    height: 20px;
+}
+
+.search_container{
+    display: flex;
+}
+
+.search_button{
+    background-color: rgb(188, 83, 86);
+    border: 0;
+    cursor: pointer;
+}
+
+.search_button:hover{
+    background-color: rgba(188, 83, 86, 0.581);
+}
+
+.header_navigation{
+    display: flex;
+    flex-direction: column;
+}

@@ -22,9 +22,12 @@
     <header>
         <div class="header_content max_width">
             <img src="./assets/img/pokeball-img.png" alt="Pokeball_Image">
-
-            <input type="text" minlength="3" placeholder="search Pokemon...">
-
+            <div class="header_navigation">
+            <div class="search_container">
+                <input onkeyup="searchPokemon()" id="input_field" type="text" minlength="3" value="" placeholder="search Pokemon...">
+            </div>
+            <p id="warning" class="warning"></p>
+        </div>
         </div>
     </header>
     <main class="maxWidth">

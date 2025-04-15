@@ -1,5 +1,6 @@
 let pokemons = [];
 let BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0"
+let filteredPokemons = []
 
 function onloadFunc() {
     fetchPokemons();
@@ -122,4 +123,23 @@ function prevPokemonCard(pokemon) {
         document.getElementById('prev_button').disabled = true;
         document.getElementById('prev_button').style.opacity = "0.2";
      }
+}
+
+function searchPokemon() {
+    let warningRef = document.getElementById('warning');
+    let input = document.getElementById('input_field').value;
+    let contentRef = document.getElementById('content')
+    if (input.length < 3) {
+        warningRef.innerHTML = 'Please enter more than 3 letters';
+        renderPokemons()
+        return;
+    }
+    warningRef.innerHTML = "";
+    filteredPokemons = pokemons.filter((pokemon) => {
+        return pokemon.singlePokemonAsJson.name.includes(input)
+    })
+    contentRef.innerHTML = "";
+    for (let index = 0; index < filteredPokemons.length; index++) {
+        contentRef.innerHTML += getSearchedPokemonsTemplate(index)
+    }
 }
