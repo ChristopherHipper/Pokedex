@@ -1,14 +1,14 @@
 function getPokemonsTemplate(i) {
     return `<div onclick="openOverlayCard(${i})" class="card">
                 <div class="card_header">
-                    <h3>#${pokemons[i].id}</h3>
-                    <h3>${pokemons[i].name.charAt(0).toUpperCase() + pokemons[i].name.slice(1)}</h3>
+                    <h3>#${pokemons[i].singlePokemonAsJson.id}</h3>
+                    <h3>${pokemons[i].singlePokemonAsJson.name.charAt(0).toUpperCase() + pokemons[i].singlePokemonAsJson.name.slice(1)}</h3>
                 </div>
-                <div class="${pokemons[i].type[0].type.name}">
-                    <img class="pokemon_img" src="${pokemons[i].img}" alt="großes bild">
+                <div class="${pokemons[i].singlePokemonAsJson.types[0].type.name}">
+                    <img class="pokemon_img" src="${pokemons[i].singlePokemonAsJson.sprites.other.home.front_default}" alt="großes bild">
                 </div>
                 <div class="card_types">
-                    ${pokemons[i].type.map(index => `<img class="types_img" src="./assets/icon/${index.type.name}.png" alt="+">`).join('')}
+                    ${pokemons[i].singlePokemonAsJson.types.map(index => `<img class="types_img" src="./assets/icon/${index.type.name}.png" alt="+">`).join('')}
                 </div>
             </div>`
 }
@@ -16,14 +16,14 @@ function getPokemonsTemplate(i) {
 function getoverlayCardTemplate(i) {
     return `<div onclick="event.stopPropagation()" class="overlay_card ">
                 <div class="overlay_card_header">
-                    <h3>#${pokemons[i].id}</h3>
-                    <h3>${pokemons[i].name.charAt(0).toUpperCase() + pokemons[i].name.slice(1)}</h3>
+                    <h3>#${pokemons[i].singlePokemonAsJson.id}</h3>
+                    <h3>${pokemons[i].singlePokemonAsJson.name.charAt(0).toUpperCase() + pokemons[i].singlePokemonAsJson.name.slice(1)}</h3>
                 </div>
-                 <div class="${pokemons[i].type[0].type.name}">
-                    <img class="overlay_pokemon_img" src="${pokemons[i].img}" alt="großes bild">
+                 <div class="${pokemons[i].singlePokemonAsJson.types[0].type.name}">
+                    <img class="overlay_pokemon_img" src="${pokemons[i].singlePokemonAsJson.sprites.other.home.front_default}" alt="großes bild">
                 </div>
                 <div class="overlay_card_types">
-                    ${pokemons[i].type.map(index => `<img class="types_img" src="./assets/icon/${index.type.name}.png" alt="+">`).join('')}
+                    ${pokemons[i].singlePokemonAsJson.types.map(index => `<img class="types_img" src="./assets/icon/${index.type.name}.png" alt="+">`).join('')}
                 </div>
                 <div class="overlay_nav">
                     <button id="main_info" onclick="openMainInformation(${[i]})" class="overlay_button">main</button>
@@ -40,19 +40,19 @@ function getMainInformation(i) {
     return `<table>
                 <tr>
                     <td>Height</td>
-                    <td>: ${[pokemons[i].height/10]} m</td>
+                    <td>: ${[pokemons[i].singlePokemonAsJson.height/10]} m</td>
                 </tr>
                 <tr>
                     <td>Weight</td>
-                    <td>: ${[pokemons[i].weight/10]} kg</td>
+                    <td>: ${[pokemons[i].singlePokemonAsJson.weight/10]} kg</td>
                 </tr>
                 <tr>
                     <td>Base Experience</td>
-                    <td>: ${[pokemons[i].baseExperience]}</td>
+                    <td>: ${[pokemons[i].singlePokemonAsJson.base_experience]}</td>
                 </tr>
                 <tr>
                     <td>Abilities</td>
-                    <td>: ${pokemons[i].abilities.map(index => `${index.ability.name}`)}</td>
+                    <td>: ${pokemons[i].singlePokemonAsJson.abilities.map(index => `${index.ability.name}`)}</td>
                 </tr>
             </table>`
 }
@@ -62,38 +62,60 @@ function getStats(i) {
                 <tr class="info_tr">
                     <td>hp</td>
                     <td class="bar_container">
-                        <div class="bar" style="width: ${pokemons[i].stats[0].base_stat-20}%;"</div>
+                        <div class="bar" style="width: ${pokemons[i].singlePokemonAsJson.stats[0].base_stat-20}%;"</div>
                     </td>
                 </tr>
                 <tr class="info_tr">
                     <td>attack</td>
                     <td class="bar_container">
-                        <div class="bar" style="width: ${pokemons[i].stats[1].base_stat-20}%;"</div>
+                        <div class="bar" style="width: ${pokemons[i].singlePokemonAsJson.stats[1].base_stat-20}%;"</div>
                     </td>
                 </tr>
                 <tr class="info_tr">
                     <td>defense</td>
                     <td class="bar_container">
-                        <div class="bar" style="width: ${pokemons[i].stats[2].base_stat-20}%;"</div>
+                        <div class="bar" style="width: ${pokemons[i].singlePokemonAsJson.stats[2].base_stat-20}%;"</div>
                     </td>
                 </tr>
                 <tr class="info_tr">
                     <td>sepcial-attack</td>
                     <td class="bar_container">
-                        <div class="bar" style="width: ${pokemons[i].stats[3].base_stat-20}%;"</div>
+                        <div class="bar" style="width: ${pokemons[i].singlePokemonAsJson.stats[3].base_stat-20}%;"</div>
                     </td>
                 </tr>
-                                <tr class="info_tr">
+                <tr class="info_tr">
                     <td>special-defense</td>
                     <td class="bar_container">
-                        <div class="bar" style="width: ${pokemons[i].stats[4].base_stat-20}%;"</div>
+                        <div class="bar" style="width: ${pokemons[i].singlePokemonAsJson.stats[4].base_stat-20}%;"</div>
                     </td>
                 </tr>
-                                <tr class="info_tr">
+                <tr class="info_tr">
                     <td>speed</td>
                     <td class="bar_container">
-                        <div class="bar" style="width: ${pokemons[i].stats[5].base_stat-20}%;"</div>
+                        <div class="bar" style="width: ${pokemons[i].singlePokemonAsJson.stats[5].base_stat-20}%;"</div>
                     </td>
                 </tr>
             </table>`
+}
+
+function getEvoChain(img1, img2, img3, evo1, evo2, evo3) {
+    return `<div class="evo_container">
+                <div class="evo_content">
+                    <img class="evo_img" src="${img1}" alt="">
+                    <span>${evo1.charAt(0).toUpperCase() + evo1.slice(1)}</span>
+                </div>
+                <span>>></span>
+                <div class="evo_content">
+                     ${img2 ? `<img class="evo_img" src="${img2}" alt="">` : 'load more Pokemons for Image!'}
+                    <span>${evo2.charAt(0).toUpperCase() + evo2.slice(1)}</span>
+                </div class="evo_content">
+                ${evo3 ? `
+                    <span>>></span>
+                    <div>
+                        ${img3 ? `<img class="evo_img" src="${img3}" alt="">` : 'load more Pokemons for Image!'}
+                        <span>${evo3.charAt(0).toUpperCase() + evo3.slice(1)}</span>
+                    </div>
+                ` : ''}
+
+            </div>`
 }

@@ -213,19 +213,4 @@
     align-items: center;
     justify-content: space-between;
     gap: 6px;
-}
-
-.evo_container{
-    display: flex;
-    align-items: center;
-    height: 200px;
-}
-
-.evo_img{
-    height: 80px;
-}
-
-.evo_content{
-    display: flex;
-    flex-direction: column;
-}
+  }
