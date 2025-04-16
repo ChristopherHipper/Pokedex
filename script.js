@@ -1,10 +1,10 @@
 let pokemons = [];
-let BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0"
+let BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0"
 let filteredPokemons = []
 
 function onloadFunc() {
     fetchPokemons();
-}
+};
 
 async function fetchPokemons() {
     try {
@@ -15,8 +15,8 @@ async function fetchPokemons() {
         fetchSinglePokemon(pokemonList);  
     } catch (error) {
         console.log("Fetch from the API didn't work");
-    }
-} 
+    };
+};
 
 async function fetchSinglePokemon(pokemonList) {
     for (let index = 0; index < pokemonList.length; index++) {
@@ -30,58 +30,58 @@ async function fetchSinglePokemon(pokemonList) {
         let responsePokemonEvoChain = await fetch(pokemonEvoChainUrl)
         let pokemonEvoChainData = await responsePokemonEvoChain.json()
         pokemons.push({singlePokemonAsJson,pokemonEvoChainData})
-    }
+    };
     renderPokemons();
-    console.log(pokemons);
-}
+};
 
 function renderPokemons() {
-    let contentRef = document.getElementById('content')
+    let contentRef = document.getElementById('content');
     contentRef.innerHTML = "";
-    for (let index = 0; index < pokemons.length; index++) {
+    filteredPokemons = pokemons;
+    for (let index = 0; index < filteredPokemons.length; index++) {
         contentRef.innerHTML += getPokemonsTemplate(index)
-    }
-}
+    };
+};
 
 function openOverlayCard(singlePokemon) {
     let openOverlay = document.getElementById("overlay");
     openOverlay.classList.remove("d_none");
     openOverlay.innerHTML = getoverlayCardTemplate(singlePokemon);
     document.getElementById("body").style.overflow = "hidden";
-    openMainInformation(singlePokemon)
-    checkNextPrevButton(singlePokemon)
-}
+    openMainInformation(singlePokemon);
+    checkNextPrevButton(singlePokemon);
+};
 
 function closeOverlayCard() {
     let closeOverlay = document.getElementById("overlay");
     closeOverlay.classList.add("d_none");
     document.getElementById("body").style.overflow = "auto";
-}
+};
 
 function openMainInformation(index) {
-    let mainRef = document.getElementById('overlay_content')
+    let mainRef = document.getElementById('overlay_content');
     mainRef.innerHTML = "";
-    document.getElementById('stats').classList.remove('aktive_link')
-    document.getElementById('evo_chain').classList.remove('aktive_link')
-    document.getElementById('main_info').classList.add('aktive_link')
-    mainRef.innerHTML = getMainInformation(index)
-}
+    document.getElementById('stats').classList.remove('aktive_link');
+    document.getElementById('evo_chain').classList.remove('aktive_link');
+    document.getElementById('main_info').classList.add('aktive_link');
+    mainRef.innerHTML = getMainInformation(index);
+};
 
 function openStats(index) {
-    let statsRef = document.getElementById('overlay_content')
+    let statsRef = document.getElementById('overlay_content');
     statsRef.innerHTML = "";
-    document.getElementById('main_info').classList.remove('aktive_link')
-    document.getElementById('evo_chain').classList.remove('aktive_link')
-    document.getElementById('stats').classList.add('aktive_link')
+    document.getElementById('main_info').classList.remove('aktive_link');
+    document.getElementById('evo_chain').classList.remove('aktive_link');
+    document.getElementById('stats').classList.add('aktive_link');
     statsRef.innerHTML = getStats(index);
-}
+};
 
 function openEvoChain(index) {
-    let evoChainRef = document.getElementById('overlay_content')
+    let evoChainRef = document.getElementById('overlay_content');
     evoChainRef.innerHTML = "";
-    document.getElementById('main_info').classList.remove('aktive_link')
-    document.getElementById('stats').classList.remove('aktive_link')
-    document.getElementById('evo_chain').classList.add('aktive_link')
+    document.getElementById('main_info').classList.remove('aktive_link');
+    document.getElementById('stats').classList.remove('aktive_link');
+    document.getElementById('evo_chain').classList.add('aktive_link');
     let chain = pokemons[index].pokemonEvoChainData.chain;
     let evo1 = chain.species.name;
     let evo2 = chain.evolves_to[0]?.species.name;
@@ -90,12 +90,12 @@ function openEvoChain(index) {
     let img2 = evo2 ? findImgByName(evo2) : '';
     let img3 = evo3 ? findImgByName(evo3) : '';
     evoChainRef.innerHTML = getEvoChain(img1, img2, img3, evo1, evo2, evo3);
-}
+};
 
 function findImgByName(name) {
     let found = pokemons.find(p => p.singlePokemonAsJson.name === name);
     return found ? found.singlePokemonAsJson.sprites.other.home.front_default : '';
-}
+};
 
 function checkNextPrevButton(singlePokemon) {
     if (singlePokemon == 0) {
@@ -104,42 +104,46 @@ function checkNextPrevButton(singlePokemon) {
      } else if (singlePokemon == pokemons.length-1) {
         document.getElementById('next_button').disabled = true;
         document.getElementById('next_button').style.opacity = "0.2";
-     } else return
-}
+     } else return;
+};
 
 function nextPokemonCard(pokemon) {
-    pokemon++
-    openOverlayCard(pokemon)
+    pokemon++;
+    openOverlayCard(pokemon);
     if (pokemon == pokemons.length-1) {
         document.getElementById('next_button').disabled = true;
         document.getElementById('next_button').style.opacity = "0.2";
-     }
-}
+     };
+};
 
 function prevPokemonCard(pokemon) {
-    pokemon--
-    openOverlayCard(pokemon)
+    pokemon--;
+    openOverlayCard(pokemon);
     if (pokemon == 0) {
         document.getElementById('prev_button').disabled = true;
         document.getElementById('prev_button').style.opacity = "0.2";
-     }
-}
+     };
+};
 
 function searchPokemon() {
     let warningRef = document.getElementById('warning');
     let input = document.getElementById('input_field').value;
-    let contentRef = document.getElementById('content')
-    if (input.length < 3) {
-        warningRef.innerHTML = 'Please enter more than 3 letters';
-        renderPokemons()
+    if (input.length < 3 && input.length > 0) {
+        warningRef.innerHTML = 'min 3 letters';
+        renderPokemons();
         return;
-    }
+    } else ;
     warningRef.innerHTML = "";
+    filterAndShowPokemons(input);
+};
+
+function filterAndShowPokemons(input) {
+    let contentRef = document.getElementById('content');
     filteredPokemons = pokemons.filter((pokemon) => {
-        return pokemon.singlePokemonAsJson.name.includes(input)
+        return pokemon.singlePokemonAsJson.name.includes(input);
     })
     contentRef.innerHTML = "";
     for (let index = 0; index < filteredPokemons.length; index++) {
-        contentRef.innerHTML += getSearchedPokemonsTemplate(index)
-    }
-}
+        contentRef.innerHTML += getPokemonsTemplate(index);
+    };
+};
