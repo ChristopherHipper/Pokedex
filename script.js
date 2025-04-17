@@ -82,7 +82,7 @@ function openEvoChain(index) {
     document.getElementById('main_info').classList.remove('aktive_link');
     document.getElementById('stats').classList.remove('aktive_link');
     document.getElementById('evo_chain').classList.add('aktive_link');
-    let chain = pokemons[index].pokemonEvoChainData.chain;
+    let chain = filteredPokemons[index].pokemonEvoChainData.chain;
     let evo1 = chain.species.name;
     let evo2 = chain.evolves_to[0]?.species.name;
     let evo3 = chain.evolves_to[0]?.evolves_to[0]?.species.name;
@@ -101,7 +101,11 @@ function checkNextPrevButton(singlePokemon) {
     if (singlePokemon == 0) {
         document.getElementById('prev_button').disabled = true;
         document.getElementById('prev_button').style.opacity = "0.2";
-     } else if (singlePokemon == pokemons.length-1) {
+        if (singlePokemon == filteredPokemons.length-1) {
+            document.getElementById('next_button').disabled = true;
+            document.getElementById('next_button').style.opacity = "0.2";
+        }
+     } else if (singlePokemon == filteredPokemons.length-1) {
         document.getElementById('next_button').disabled = true;
         document.getElementById('next_button').style.opacity = "0.2";
      } else return;
@@ -110,7 +114,7 @@ function checkNextPrevButton(singlePokemon) {
 function nextPokemonCard(pokemon) {
     pokemon++;
     openOverlayCard(pokemon);
-    if (pokemon == pokemons.length-1) {
+    if (pokemon == filteredPokemons.length-1) {
         document.getElementById('next_button').disabled = true;
         document.getElementById('next_button').style.opacity = "0.2";
      };
@@ -127,13 +131,16 @@ function prevPokemonCard(pokemon) {
 
 function searchPokemon() {
     let warningRef = document.getElementById('warning');
+    let loadButton = document.getElementById('load_button');
     let input = document.getElementById('input_field').value;
-    if (input.length < 3 && input.length > 0) {
+    if (input.length < 3) {
         warningRef.innerHTML = 'min 3 letters';
+        loadButton.classList.remove('d_none');
         renderPokemons();
         return;
     } else ;
     warningRef.innerHTML = "";
+    loadButton.classList.add('d_none');
     filterAndShowPokemons(input);
 };
 
@@ -141,7 +148,7 @@ function filterAndShowPokemons(input) {
     let contentRef = document.getElementById('content');
     filteredPokemons = pokemons.filter((pokemon) => {
         return pokemon.singlePokemonAsJson.name.includes(input);
-    })
+    });
     contentRef.innerHTML = "";
     for (let index = 0; index < filteredPokemons.length; index++) {
         contentRef.innerHTML += getPokemonsTemplate(index);

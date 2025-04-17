@@ -112,7 +112,7 @@ function getEvoChain(img1, img2, img3, evo1, evo2, evo3) {
                 </div class="evo_content">
                 ${evo3 ? `
                     <span>>></span>
-                    <div>
+                    <div class="evo_content">
                         ${img3 ? `<img class="evo_img" src="${img3}" alt="">` : 'load more Pokemons for Image!'}
                         <span>${evo3.charAt(0).toUpperCase() + evo3.slice(1)}</span>
                     </div>

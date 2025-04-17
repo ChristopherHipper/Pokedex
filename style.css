@@ -227,7 +227,7 @@
 }
 
 .evo_content{
-    padding-left: 8px;
+    padding-left: 2px;
     display: flex;
     flex-direction: column;
 }

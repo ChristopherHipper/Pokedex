@@ -21,7 +21,7 @@
     </div>
     <header>
         <div class="header_content max_width">
-            <img src="./assets/img/pokeball-img.png" alt="Pokeball_Image">
+            <a href="./index.html"><img src="./assets/img/pokeball-img.png" alt="Pokeball_Image"></a>
             <div class="header_navigation">
             <div class="search_container">
                 <input onkeyup="searchPokemon()" id="input_field" type="text" minlength="3" value="" placeholder="search Pokemon...">
@@ -34,15 +34,12 @@
         <div class="content" id="content">
 
         </div>
-        <button onclick="fetchPokemons()" class="load_button">load more...</button>
+        <button id="load_button" onclick="fetchPokemons()" class="load_button">load more...</button>
     </main>
     <footer>
         <div class="footer_content maxWidth">
             <a href="./impressum.html">Impressum</a>  |  <a href="./dataprotection.html">Datenschutz</a>
         </div>
     </footer>
-
-        
-
 </body>
 </html>

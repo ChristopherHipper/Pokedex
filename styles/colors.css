@@ -11,23 +11,43 @@
 }
 
 .bug{
-    background-color: rgb(19, 64, 19);
+    background-color: rgb(145, 194, 40);
 }
 
 .normal{
-    background-color: gray;
+    background-color: rgb(145, 154, 162);
 }
 
 .poison{
-    background-color: blueviolet;
+    background-color: rgb(170, 105, 199);
 }
 
 .electric{
-    background-color: yellow;
+    background-color: rgb(243, 211, 56);
 }
 
 .ground{
-    background-color: orange;
+    background-color: rgb(218, 120, 68);
+}
+
+.fairy{
+    background-color: rgb(236, 144, 231);
+}
+
+.fighting{
+    background-color: rgb(207, 62, 105);
+}
+
+.psychic{
+    background-color: rgb(249, 114, 119);
+}
+
+.rock{
+    background-color: rgb(200, 184, 140);
+}
+
+.ghost{
+    background-color: rgb(81, 105, 173);
 }
 
 
