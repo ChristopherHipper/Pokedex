@@ -16,9 +16,14 @@
 </head>
 
 <body id="body" onload="onloadFunc()">
-    <div onclick="closeOverlayCard()" id="overlay" class="overlay d_none">
-
+    <div id="loading_screen" class="loading_screen d_none">
+        <img src="./assets/img/pokeball-img.png" alt="Pokeball_Image">
+        <span>loading...</span>
     </div>
+
+    <div onclick="closeOverlayCard()" id="overlay" class="overlay d_none">
+    </div>
+
     <header>
         <div class="header_content max_width">
             <a href="./index.html"><img src="./assets/img/pokeball-img.png" alt="Pokeball_Image"></a>
@@ -30,12 +35,14 @@
         </div>
         </div>
     </header>
+
     <main class="maxWidth">
         <div class="content" id="content">
 
         </div>
-        <button id="load_button" onclick="fetchPokemons()" class="load_button">load more...</button>
+        <button id="load_button" onclick="onloadFunc()" class="load_button">load more...</button>
     </main>
+
     <footer>
         <div class="footer_content maxWidth">
             <a href="./impressum.html">Impressum</a>  |  <a href="./dataprotection.html">Datenschutz</a>

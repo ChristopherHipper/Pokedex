@@ -2,8 +2,11 @@ let pokemons = [];
 let BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0"
 let filteredPokemons = []
 
-function onloadFunc() {
-    fetchPokemons();
+async function onloadFunc() {
+    openLoadingSpinner();
+    await fetchPokemons();
+    closeLoadingSpinner();
+    renderPokemons();
 };
 
 async function fetchPokemons() {
@@ -12,7 +15,7 @@ async function fetchPokemons() {
         let responseAsJson = await response.json();
         BASE_URL = responseAsJson.next
         let pokemonList = responseAsJson.results
-        fetchSinglePokemon(pokemonList);  
+        await fetchSinglePokemon(pokemonList);  
     } catch (error) {
         console.log("Fetch from the API didn't work");
     };
@@ -31,7 +34,6 @@ async function fetchSinglePokemon(pokemonList) {
         let pokemonEvoChainData = await responsePokemonEvoChain.json()
         pokemons.push({singlePokemonAsJson,pokemonEvoChainData})
     };
-    renderPokemons();
 };
 
 function renderPokemons() {
@@ -153,4 +155,16 @@ function filterAndShowPokemons(input) {
     for (let index = 0; index < filteredPokemons.length; index++) {
         contentRef.innerHTML += getPokemonsTemplate(index);
     };
+};
+
+function openLoadingSpinner() {
+    let openLoadingRef = document.getElementById('loading_screen');
+    openLoadingRef.classList.remove('d_none');
+    document.getElementById("body").style.overflow = "hidden";
+};
+
+function closeLoadingSpinner() {
+    let closeLoadingRef = document.getElementById('loading_screen');
+    closeLoadingRef.classList.add('d_none');
+    document.getElementById("body").style.overflow = "auto";
 };

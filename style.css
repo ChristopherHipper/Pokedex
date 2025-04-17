@@ -273,3 +273,28 @@
     display: flex;
     flex-direction: column;
 }
+
+.loading_screen{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(5, 23, 30);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.loading_screen > img {
+    width: 200px;
+    animation:  rotateForever 2s infinite;
+}
+
+@keyframes rotateForever {
+    from {
+    transform: rotate(360deg);
+        }
+}
