@@ -89,14 +89,14 @@ function openEvoChain(index) {
     let evo2 = chain.evolves_to[0]?.species.name;
     let evo3 = chain.evolves_to[0]?.evolves_to[0]?.species.name;
     let img1 = findImgByName(evo1);
-    let img2 = evo2 ? findImgByName(evo2) : '';
-    let img3 = evo3 ? findImgByName(evo3) : '';
+    let img2 = findImgByName(evo2);
+    let img3 = findImgByName(evo3);
     evoChainRef.innerHTML = getEvoChain(img1, img2, img3, evo1, evo2, evo3);
 };
 
 function findImgByName(name) {
-    let found = pokemons.find(p => p.singlePokemonAsJson.name === name);
-    return found ? found.singlePokemonAsJson.sprites.other.home.front_default : '';
+    let findPokemon = pokemons.find(pokemonName => pokemonName.singlePokemonAsJson.name === name);
+    return findPokemon ? findPokemon.singlePokemonAsJson.sprites.other.home.front_default : '';
 };
 
 function checkNextPrevButton(singlePokemon) {

@@ -6,7 +6,7 @@
 }
 
 .max_width {
-  max-width: 1440px;
+  max-width: 1920px;
   margin: 0 auto;
 }
 
@@ -14,17 +14,6 @@
   display: none;
 }
 
-td{
-  padding-bottom: 8px;
-}
 
-table{
-  padding-top: 12px;
-  padding-bottom: 12px;
-}
-
-#overlay_content{
-  height: 200px;
-}
 
 

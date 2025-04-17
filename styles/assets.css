@@ -18,3 +18,16 @@ main{
     text-align: center;
     padding-bottom: 12px;
 }
+
+td{
+    padding-bottom: 8px;
+}
+  
+table{
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+  
+#overlay_content{
+    height: 200px;
+}

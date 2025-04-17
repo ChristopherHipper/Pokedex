@@ -10,8 +10,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 56px;
+    padding-right: 150px;
 }
 
 .header_content img{
@@ -21,6 +21,7 @@
 
 .header_content input{
     color: black;
+    height: 24px;
 }
 
 .footer_content{
@@ -73,7 +74,6 @@
     
 }
 
-
 .card_types{
     display: flex;
     justify-content: center;
@@ -123,7 +123,6 @@
     justify-content: center;
     align-items: center;
     z-index: 1;
-    
 }
 
 .overlay_card{
@@ -251,7 +250,7 @@
 
 .warning{
     color: rgb(203, 0, 0);
-    font-size: 14px;
+    font-size: 16px;
     height: 30px;
 }
 
