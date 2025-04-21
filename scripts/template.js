@@ -16,10 +16,10 @@ function getPokemonsTemplate(i) {
 function getoverlayCardTemplate(i) {
     return `<div onclick="event.stopPropagation()" class="overlay_card ">
                 <div class="overlay_card_header">
-                    <button class="switch_button" id="prev_button" onclick="prevPokemonCard(${i})"> <img class="icon" src="./assets/img/pfeil-links.PNG" alt=""></button>
+                    <button class="switch_button" id="prev_button" onclick="prevPokemonCard(${i})"> <img class="icon" src="./assets/img/pfeil-links.png" alt=""></button>
                     <h3>#${filteredPokemons[i].singlePokemonAsJson.id}</h3>
                     <h3>${filteredPokemons[i].singlePokemonAsJson.name.charAt(0).toUpperCase() + filteredPokemons[i].singlePokemonAsJson.name.slice(1)}</h3>
-                    <button class="switch_button" id="next_button" onclick="nextPokemonCard(${i})"> <img class="icon" src="./assets/img/pfeil-rechts.png" alt=""></button>
+                    <button class="switch_button" id="next_button" onclick="nextPokemonCard(${i})"> <img class="icon" src="./assets/img/pfeil-rechts.PNG" alt=""></button>
                 </div>
                 <div class="${filteredPokemons[i].singlePokemonAsJson.types[0].type.name}">
                     <img class="overlay_pokemon_img" src="${filteredPokemons[i].singlePokemonAsJson.sprites.other.home.front_default}" alt="großes bild">
@@ -33,6 +33,9 @@ function getoverlayCardTemplate(i) {
                     <button id="evo_chain" onclick="openEvoChain(${[i]})" class="overlay_button">evo chain</button>
                 </div>
                 <div id="overlay_content">
+                </div>
+                <div class="close_button_container">
+                    <button class="switch_button close_button" onclick="closeOverlayCard()"> <img class="icon" src="./assets/img/buchstabe-x.png" alt=""></button>
                 </div>
             </div>`
 };

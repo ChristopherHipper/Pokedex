@@ -17,7 +17,7 @@
 
 <body id="body" onload="onloadFunc()">
     <div id="loading_screen" class="loading_screen d_none">
-        <img src="./assets/img/pokeball-img.png" alt="Pokeball_Image">
+        <img src="./assets/img/pokeball-loader.png" alt="Pokeball_Image">
         <span>loading...</span>
     </div>
 
@@ -29,7 +29,7 @@
             <a href="./index.html"><img src="./assets/img/pokeball-img.png" alt="Pokeball_Image"></a>
             <div class="header_navigation">
             <div class="search_container">
-                <input onkeyup="searchPokemon()" id="input_field" type="text" minlength="3" value="" placeholder="search Pokemon...">
+                <input onfocusout="emptyWarning()" onkeyup="searchPokemon()" id="input_field" type="text" minlength="3" value="" placeholder="search Pokemon...">
             </div>
             <p id="warning" class="warning"></p>
         </div>

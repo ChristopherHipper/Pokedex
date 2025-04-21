@@ -5,8 +5,10 @@ let filteredPokemons = []
 async function onloadFunc() {
     openLoadingSpinner();
     await fetchPokemons();
-    closeLoadingSpinner();
     renderPokemons();
+    closeLoadingSpinner();
+    console.log(pokemons);
+    
 };
 
 async function fetchPokemons() {
@@ -134,7 +136,7 @@ function prevPokemonCard(pokemon) {
 function searchPokemon() {
     let warningRef = document.getElementById('warning');
     let loadButton = document.getElementById('load_button');
-    let input = document.getElementById('input_field').value;
+    let input = document.getElementById('input_field').value.toLowerCase();
     if (input.length < 3) {
         warningRef.innerHTML = 'min 3 letters';
         loadButton.classList.remove('d_none');
@@ -168,3 +170,8 @@ function closeLoadingSpinner() {
     closeLoadingRef.classList.add('d_none');
     document.getElementById("body").style.overflow = "auto";
 };
+
+function emptyWarning() {
+    let warningRef = document.getElementById('warning');
+    warningRef.innerHTML = "";
+}
